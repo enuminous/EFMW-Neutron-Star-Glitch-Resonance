@@ -98,3 +98,10 @@ A successful scientific test would require:
 5. reproducibility across multiple pulsars.
 
 The mathematical theorem in this repository is independent of those empirical questions.
+
+## Lean 4 verification
+
+The pinned [formal package](formal/VERIFICATION.md) contains kernel-checked mathematical
+statements with an explicit [coverage and obligation ledger](formal/COVERAGE.md).
+The `Lean verification` workflow builds the package and tests its strict axiom audit.
+The workflow result for a commit, rather than this link alone, establishes compilation.
