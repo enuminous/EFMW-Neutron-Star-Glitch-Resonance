@@ -42,8 +42,10 @@ private theorem phase_negative (x : ℝ) (hθ : arctan π < x) (hx : x ≤ π) :
   have hs := sin_neg_of_neg_of_neg_pi_lt (sub_neg.mpr hθ)
     (show -π < arctan π-x by linarith [arctan_pos.mpr pi_pos])
   rw [← phase_identity] at hs
-  apply (mul_lt_mul_right (cos_arctan_pos π)).mp
-  simpa using hs
+  by_contra hn
+  have hnn : 0 ≤ π*cos x - sin x := le_of_not_gt hn
+  have hp := mul_nonneg hnn (cos_arctan_pos π).le
+  linarith
 
 theorem derivative_positive (A τ t : ℝ) (hA : 0 < A) (hτ : 0 < τ)
     (ht : 0 ≤ t) (hlt : t < peak τ) : 0 < deriv (transient A τ) t := by
